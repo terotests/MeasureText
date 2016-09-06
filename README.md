@@ -18,7 +18,7 @@ One of the parameters, which makes this a bit more difficul is that if the avail
 
 ## Test results
 
-[http://codepen.io/teroktolonen/full/PGwBzd/](Try in Codepen)
+[Try in Codepen](http://codepen.io/teroktolonen/full/PGwBzd/)
 
 ### Chrome Version 52
 ```
