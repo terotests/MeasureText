@@ -4,9 +4,9 @@ The project aims to find out the optimal way of measuring the bounding box for a
 
 Currently the algorithms are:
 
-- MeasureText(<font>, <size>, <availableWidth>, <txt>)
-- MeasureTextCanvas(<font>, <size>, <availableWidth>, <txt>)
-- MeasureTextCached(<font>, <size>, <availableWidth>, <txt>)
+- MeasureText(fontFamily, fontSize, availableWidth, text)
+- MeasureTextCanvas(fontFamily, fontSize, availableWidth, text)
+- MeasureTextCached(fontFamily, fontSize, availableWidth, text)
 
 *MeasureTextCached* seems to be fastest, it will always try to aggressively cache the result, if not it will fall back to MeasureTextCanvas.
 
