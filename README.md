@@ -14,7 +14,7 @@ Currently the algorithms are:
 
 *MeasureText* is using cached DOM elements to measure the text size. It will create a new DOM element for each font family + size and place the text in there.
 
-One of the parameters, which makes this a bit more difficul is that if the availableWidth > rendered text width, then only the rendered text width will be returned. However, if the text wraps to multiple lines
+One of the parameters, which makes this a bit more difficul is that if the availableWidth > rendered text width, then only the rendered text width will be returned. However, if the text wraps to multiple lines then width == availableWidth and the interesting result is the height of the bounding box.
 
 ## Test results
 
