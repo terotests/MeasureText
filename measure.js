@@ -4,7 +4,7 @@
 
 		var fontDivs = {};
 		var container = document.createElement('DIV');
-		container.setAttribute("style", "position:absolute;left:10;top:10;width:0px;height:0px;overflow:hidden;")
+		container.setAttribute("style", "position:absolute;left:-10000;top:-10000;width:0px;height:0px;overflow:hidden;")
 		document.body.appendChild(container);
 
 		return function Measure(font, size, width, txt) {
@@ -41,7 +41,7 @@
 		var canvas = document.createElement("canvas");
 		var ctx = canvas.getContext("2d");
 
-		container.setAttribute("style", "position:absolute;left:10;top:10;width:0px;height:0px;overflow:hidden;")
+		container.setAttribute("style", "position:absolute;left:-10000;top:-10000;width:0px;height:0px;overflow:hidden;")
 		document.body.appendChild(container);
 
 		return function Measure(font, size, width, txt) {
@@ -99,12 +99,12 @@
 		var canvas = document.createElement("canvas");
 		var ctx = canvas.getContext("2d");
 
-		container.setAttribute("style", "position:absolute;left:10;top:10;width:0px;height:0px;overflow:hidden;")
+		container.setAttribute("style", "position:absolute;left:-10000;top:-10000;width:0px;height:0px;overflow:hidden;")
 		document.body.appendChild(container);
 
 		return function Measure(font, size, width, txt) {
 			
-			var id = id+font+size;
+			var id = txt+font+size;
 			if(id) {
 				if(r = results[id]) {
 					return r;
