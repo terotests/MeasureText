@@ -19,15 +19,15 @@ One of the parameters, which makes this a bit more difficul is that if the avail
 ## Test results
 
 ```
-sameTextOneLinedom: 76.241ms
-sameTextMultiLinedom: 16.480ms
-sameTextMultiLineVariableLengthdom: 1931.628ms
+sameTextOneLinedom: 42.703ms
+sameTextMultiLinedom: 7.983ms
+sameTextMultiLineVariableLengthdom: 1007.613ms
 
-sameTextOneLinecanvas: 18.026ms
-sameTextMultiLinecanvas: 13.831ms
-sameTextMultiLineVariableLengthcanvas: 2187.365ms
+sameTextOneLinecanvas: 12.834ms
+sameTextMultiLinecanvas: 10.966ms
+sameTextMultiLineVariableLengthcanvas: 1102.227ms
 
-sameTextOneLinecached: 25.811ms
-sameTextMultiLinecached: 18.675ms
-sameTextMultiLineVariableLengthcached: 116.034ms
+sameTextOneLinecached: 6.800ms
+sameTextMultiLinecached: 22.373ms
+sameTextMultiLineVariableLengthcached: 105.535ms
 ```
