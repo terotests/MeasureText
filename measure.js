@@ -10,13 +10,14 @@
 
 		return function Measure(font, size, width, txt) {
 			
-			var view = fontDivs[font+size];
+			var div_id = font+size+"/"+width;
+			var view = fontDivs[div_id];
 
-			if(!fontDivs[font+size]) {
+			if(!fontDivs[div_id]) {
 				view = document.createElement('DIV');
 				view.setAttribute("style", "position:absolute;left:0px;top:0px;white-space:pre-line;font-family:"+font+";font-size:"+size+"px;width:"+width+"px;");
 				container.appendChild(view);
-				fontDivs[font+size] = view;
+				fontDivs[div_id] = view;
 			}
 			if(view.textContent != txt) view.textContent = txt;
 			var res = {
@@ -26,7 +27,7 @@
 			if(res.height < ( size *2) ) {
 				view.style.width = "auto";	
 				res.width = view.clientWidth+1;
-				view.style.width = width+"px;";	
+				view.style.width = width+"px";	
 			}
 			return res;
 		}
@@ -47,7 +48,6 @@
 
 		return function Measure(font, size, width, txt) {
 			
-			var view = fontDivs[font+size];
 
 			if(width > (txt.length*size)) {
 				var ctx = canvases[font+size];
@@ -63,12 +63,14 @@
 					height : size
 				}
 			}
+			var div_id = font+size+"/"+width;
+			var view = fontDivs[div_id];
 
-			if(!fontDivs[font+size]) {
+			if(!fontDivs[div_id]) {
 				view = document.createElement('DIV');
 				view.setAttribute("style", "position:absolute;left:0px;top:0px;white-space:pre-line;font-family:"+font+";font-size:"+size+"px;width:"+width+"px;");
 				container.appendChild(view);
-				fontDivs[font+size] = view;
+				fontDivs[div_id] = view;
 			}
 			if(view.textContent != txt) view.textContent = txt;
 			var res = {
@@ -78,7 +80,7 @@
 			if(res.height < ( size *2) ) {
 				view.style.width = "auto";	
 				res.width = view.clientWidth+1;
-				view.style.width = width+"px;";	
+				view.style.width = width+"px";	
 			}
 			return res;
 		}
@@ -125,13 +127,14 @@
 				return res;
 			}
 
-			var view = fontDivs[font+size+"/"+width];
+			var div_id = font+size+"/"+width;
+			var view = fontDivs[div_id];
 
-			if(!fontDivs[font+size+"/"+width]) {
+			if(!fontDivs[div_id]) {
 				view = document.createElement('DIV');
 				view.setAttribute("style", "position:absolute;left:0px;top:0px;white-space:pre-line;font-family:"+font+";font-size:"+size+"px;width:"+width+"px;");
 				container.appendChild(view);
-				fontDivs[font+size+"/"+width] = view;
+				fontDivs[div_id] = view;
 			}
 			if(view.textContent != txt) {
 				view.textContent = txt;
@@ -145,7 +148,7 @@
 				
 				view.style.width = "auto";	
 				res.width = view.clientWidth+1;
-				view.style.width = width+"px;";	
+				view.style.width = width+"px";	
 			}
 			results[id] = res;
 			return res;
