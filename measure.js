@@ -5,7 +5,7 @@
 
 		var fontDivs = {};
 		var container = document.createElement('DIV');
-		container.setAttribute("style", "position:absolute;left:-10000;top:-10000;width:0px;height:0px;overflow:hidden;")
+		container.setAttribute("style", "position:absolute;left:-10000px;top:10px;width:3000px;height:300px;overflow:hidden;")
 		document.body.appendChild(container);
 
 		return function Measure(font, size, width, txt) {
@@ -42,7 +42,7 @@
 		var canvas = document.createElement("canvas");
 		var ctx = canvas.getContext("2d");
 
-		container.setAttribute("style", "position:absolute;left:-10000;top:-10000;width:0px;height:0px;overflow:hidden;")
+		container.setAttribute("style", "position:absolute;left:-10000px;top:10px;width:3000px;height:300px;overflow:hidden;")
 		document.body.appendChild(container);
 
 		return function Measure(font, size, width, txt) {
@@ -98,17 +98,15 @@
 		var canvas = document.createElement("canvas");
 		var ctx = canvas.getContext("2d");
 
-		container.setAttribute("style", "position:absolute;left:-10000;top:-10000;width:0px;height:0px;overflow:hidden;")
+		container.setAttribute("style", "position:absolute;left:-10000px;top:10px;width:3000px;height:300px;overflow:hidden;")
 		document.body.appendChild(container);
 
 		return function Measure(font, size, width, txt) {
 			
-			var id = txt+font+size, r;
+			var id = "c"+txt+font+size+"/"+width, r;
 			if(r = results[id]) {
 				return r;
 			}
-			
-			var view = fontDivs[font+size];
 
 			if(width > (txt.length*size)) {
 				var ctx = canvases[font+size];
@@ -121,24 +119,30 @@
 				var s = ctx.measureText(txt);
 				var res = {
 					width  : s.width,
-					height : size
+					height : parseInt(size)
 				}
 				results[id] = res;
 				return res;
 			}
 
-			if(!fontDivs[font+size]) {
+			var view = fontDivs[font+size+"/"+width];
+
+			if(!fontDivs[font+size+"/"+width]) {
 				view = document.createElement('DIV');
 				view.setAttribute("style", "position:absolute;left:0px;top:0px;white-space:pre-line;font-family:"+font+";font-size:"+size+"px;width:"+width+"px;");
 				container.appendChild(view);
-				fontDivs[font+size] = view;
+				fontDivs[font+size+"/"+width] = view;
 			}
-			if(view.textContent != txt) view.textContent = txt;
+			if(view.textContent != txt) {
+				view.textContent = txt;
+			}
 			var res = {
 				width  : view.clientWidth,
 				height : view.clientHeight
 			};
+
 			if(res.height < ( size *2) ) {
+				
 				view.style.width = "auto";	
 				res.width = view.clientWidth+1;
 				view.style.width = width+"px;";	
