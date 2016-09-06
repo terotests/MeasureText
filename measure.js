@@ -104,9 +104,9 @@
 
 		return function Measure(font, size, width, txt) {
 			
-			var id = txt;
+			var id = id+font+size;
 			if(id) {
-				if(r = results[id+font+size]) {
+				if(r = results[id]) {
 					return r;
 				}
 			} else {
@@ -148,7 +148,7 @@
 				res.width = view.clientWidth+1;
 				view.style.width = width+"px;";	
 			}
-			results[id+font+size] = res;
+			results[id] = res;
 			return res;
 		}
 	})();
