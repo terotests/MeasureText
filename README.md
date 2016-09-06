@@ -18,16 +18,20 @@ One of the parameters, which makes this a bit more difficul is that if the avail
 
 ## Test results
 
+[http://codepen.io/teroktolonen/full/PGwBzd/](Try in Codepen)
+
+### Chrome Version 52
 ```
-sameTextOneLinedom: 42.703ms
-sameTextMultiLinedom: 7.983ms
-sameTextMultiLineVariableLengthdom: 1007.613ms
-
-sameTextOneLinecanvas: 12.834ms
-sameTextMultiLinecanvas: 10.966ms
-sameTextMultiLineVariableLengthcanvas: 1102.227ms
-
-sameTextOneLinecached: 6.800ms
-sameTextMultiLinecached: 22.373ms
-sameTextMultiLineVariableLengthcached: 105.535ms
+dom sameTextOneLine 1357ms
+dom sameTextMultiLine 8ms
+dom sameTextMultiLineVariableLength 1069ms
+dom sameTextMultiLineVariableLengthVariableWidth 1532ms
+canvas sameTextOneLine 12ms
+canvas sameTextMultiLine 10ms
+canvas sameTextMultiLineVariableLength 966ms
+canvas sameTextMultiLineVariableLengthVariableWidth 1566ms
+cached sameTextOneLine 4ms
+cached sameTextMultiLine 16ms
+cached sameTextMultiLineVariableLength 158ms
+cached sameTextMultiLineVariableLengthVariableWidth 125ms
 ```
