@@ -1,5 +1,6 @@
 
 (function(register) {
+
 	register.MeasureText = (function() {
 
 		var fontDivs = {};
@@ -92,8 +93,6 @@
 		var canvases = {};
 
 		var results = {};
-		var _id = 1;
-
 		var container = document.createElement('DIV');
 		
 		var canvas = document.createElement("canvas");
@@ -104,15 +103,11 @@
 
 		return function Measure(font, size, width, txt) {
 			
-			var id = txt+font+size;
-			if(id) {
-				if(r = results[id]) {
-					return r;
-				}
-			} else {
-				txt._id = _id++;
-				id = txt._id;
+			var id = txt+font+size, r;
+			if(r = results[id]) {
+				return r;
 			}
+			
 			var view = fontDivs[font+size];
 
 			if(width > (txt.length*size)) {
@@ -128,7 +123,7 @@
 					width  : s.width,
 					height : size
 				}
-				results[id+font+size] = res;
+				results[id] = res;
 				return res;
 			}
 
