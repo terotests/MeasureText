@@ -47,22 +47,24 @@
 		document.body.appendChild(container);
 
 		return function Measure(font, size, width, txt) {
-			
+		
 
-			if(width > (txt.length*size)) {
-				var ctx = canvases[font+size];
-				if(!ctx) {
-					var canvas = document.createElement("canvas");
-					ctx = canvas.getContext("2d");
-					ctx.font = size+"px "+font;
-					canvases[font+size] = ctx;
-				}
-				var s = ctx.measureText(txt);
+			var ctx = canvases[font+size];
+			if(!ctx) {
+				var canvas = document.createElement("canvas");
+				ctx = canvas.getContext("2d");
+				ctx.font = size+"px "+font;
+				canvases[font+size] = ctx;
+			}
+			var s = ctx.measureText(txt);		
+			if( s.width < width ) {
+
 				return {
 					width  : s.width,
 					height : size
 				}
-			}
+			}				
+
 			var div_id = font+size+"/"+width;
 			var view = fontDivs[div_id];
 
@@ -77,17 +79,13 @@
 				width  : view.clientWidth,
 				height : view.clientHeight
 			};
-			if(res.height < ( size *2) ) {
-				view.style.width = "auto";	
-				res.width = view.clientWidth+1;
-				view.style.width = width+"px";	
-			}
+
 			return res;
 		}
 	})();
 
 	/*
-
+		Usually fastes version, consomes most of the memory
 	*/
 	register.MeasureTextCached= (function() {
 
@@ -145,10 +143,18 @@
 			};
 
 			if(res.height < ( size *2) ) {
-				
-				view.style.width = "auto";	
-				res.width = view.clientWidth+1;
-				view.style.width = width+"px";	
+				var ctx = canvases[font+size];
+				if(!ctx) {
+					var canvas = document.createElement("canvas");
+					ctx = canvas.getContext("2d");
+					ctx.font = size+"px "+font;
+					canvases[font+size] = ctx;
+				}
+				var s = ctx.measureText(txt);
+				return {
+					width  : s.width,
+					height : size
+				}
 			}
 			results[id] = res;
 			return res;
@@ -156,4 +162,3 @@
 	})();
 
 })(window);
-
